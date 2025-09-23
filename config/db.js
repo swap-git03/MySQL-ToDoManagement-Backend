@@ -1,7 +1,6 @@
 require('dotenv').config()
 const mysql = require('mysql2')
 
-function dbConnect() {
     const connection = mysql.createConnection({
         host: process.env.HOST,
         user: process.env.USER,
@@ -17,6 +16,5 @@ function dbConnect() {
         }
         console.log('db connected')
     })
-}
 
-module.exports = dbConnect
+module.exports = connection
