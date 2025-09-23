@@ -1,16 +1,32 @@
+// index.js
 const express = require('express')
 require('dotenv').config()
 const taskRoute = require('./routes/taskRoute')
-const db = require('./config/db')  // ✅ This now gives you the connection object
+const db = require('./config/db')  // MySQL connection
 
 const app = express()
 const port = process.env.PORT || 7002
 
-app.use(express.json())  // ✅ Body parser must come before routes
+// ✅ Middleware to parse JSON body (must be before routes)
+app.use(express.json())
 
-app.get('/', (req, res) => res.send('helo'))
+// ✅ Test root route
+app.get('/', (req, res) => res.send('Hello World!'))
+
+// ✅ Task routes
 app.use('/task', taskRoute)
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+// ✅ Start server after DB is connected
+db.connect(err => {
+  if (err) {
+    console.error('DB connection failed:', err)
+    process.exit(1) // Stop server if DB connection fails
+  } else {
+    console.log('DB connected successfully')
 
-module.exports = db  // ✅ Export it if controllers need direct access
+    app.listen(port, () => {
+      console.log(`Server running on port ${port}!`)
+    })
+  }
+})
+
