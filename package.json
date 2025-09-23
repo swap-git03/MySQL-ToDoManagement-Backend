@@ -1,0 +1,25 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swap-git03/MySQL-ToDoManagement.git"
+  },
+  "author": "Swapnil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swap-git03/MySQL-ToDoManagement/issues"
+  },
+  "homepage": "https://github.com/swap-git03/MySQL-ToDoManagement#readme",
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^3.1.10"
+  }
+}
